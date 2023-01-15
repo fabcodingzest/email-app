@@ -8,7 +8,7 @@ interface TextProps {
   spanStyles?: string
 }
 const Text: React.FunctionComponent<TextProps> = ({
-  fontSize = 'text-[0.6rem]',
+  fontSize = 'text-xs',
   color = 'text-secondary',
   spanText,
   text,
