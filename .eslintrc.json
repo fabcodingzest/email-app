@@ -36,10 +36,10 @@
     "react/prop-types": 0,
     "react/react-in-jsx-scope": 0,
     "@typescript-eslint/no-empty-function": 0,
-    "camelcase": "error",
     "spaced-comment": "error",
     "quotes": ["error", "single"],
-    "no-duplicate-imports": "error"
+    "no-duplicate-imports": "error",
+    "tailwindcss/no-custom-classname": 0
   },
   "settings": {
     "react": {
