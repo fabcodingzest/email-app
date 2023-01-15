@@ -6,10 +6,13 @@ import { formatDate } from '../../utils/formatDate'
 
 interface EmailCardProps {
   data: Email
-  openDetails: React.Dispatch<React.SetStateAction<string>>
+  details: {
+    detailActive: string
+    setDetailActive: React.Dispatch<React.SetStateAction<string>>
+  }
 }
 
-const EmailCard: React.FunctionComponent<EmailCardProps> = ({ data, openDetails }) => {
+const EmailCard: React.FunctionComponent<EmailCardProps> = ({ data, details }) => {
   const {
     id,
     from: { email, name },
@@ -17,10 +20,13 @@ const EmailCard: React.FunctionComponent<EmailCardProps> = ({ data, openDetails 
     subject,
     short_description,
   } = data
+  const { detailActive, setDetailActive } = details
   const favourite = true
   const formattedDate = formatDate(date)
+  console.log(detailActive)
+  const isActive = detailActive !== '' && detailActive === id
   const setOpenDetail = () => {
-    openDetails(id)
+    setDetailActive(id)
   }
   const handleClick = (event: SyntheticEvent) => {
     event.preventDefault()
@@ -33,7 +39,9 @@ const EmailCard: React.FunctionComponent<EmailCardProps> = ({ data, openDetails 
   }
   return (
     <div
-      className=' border-neutral flex cursor-pointer items-start gap-2 rounded-md border bg-white px-2 py-1 sm:px-4 sm:py-2 md:gap-4'
+      className={`border-neutral flex cursor-pointer items-start gap-2 rounded-md border bg-white px-2 py-1 sm:px-4 sm:py-2 md:gap-4 ${
+        isActive ? 'border-primary' : 'border-neutral'
+      }`}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       role='button'
