@@ -18,7 +18,7 @@ const EmailCard: React.FunctionComponent<EmailCardProps> = ({ data }) => {
   const favourite = true
   const formattedDate = formatDate(date)
   return (
-    <div className=' border-neutral flex items-start gap-2 rounded-md border bg-white px-2 py-1  sm:px-4 sm:py-2 md:gap-4'>
+    <div className=' border-neutral flex cursor-pointer items-start gap-2 rounded-md border bg-white px-2 py-1 sm:px-4 sm:py-2 md:gap-4'>
       <ProfileImage initial={name[0].toUpperCase()} />
       <div className='w-5/6 sm:w-max'>
         <Text text={'From:'} spanText={`${name} <${email}>`} spanStyles='font-extrabold' />
