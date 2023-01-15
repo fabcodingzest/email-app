@@ -1,5 +1,5 @@
 import React from 'react'
-import ProfileImage from '../Image/ProfileImage'
+import ProfileImage from '../common/ProfileImage'
 import { Email } from './EmailList'
 import Text from '../common/Text'
 import { formatDate } from '../../utils/formatDate'
