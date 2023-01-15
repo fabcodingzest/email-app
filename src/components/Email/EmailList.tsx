@@ -12,7 +12,12 @@ export interface Email {
   short_description: string
 }
 
-const emailList: Email[] = [
+interface EmailListProps {
+  openDetails: React.Dispatch<React.SetStateAction<string>>
+  width: string
+}
+
+export const emailList: Email[] = [
   {
     id: '1',
     from: {
@@ -76,11 +81,11 @@ const emailList: Email[] = [
   },
 ]
 
-const EmailList: React.FunctionComponent = () => {
+const EmailList: React.FunctionComponent<EmailListProps> = ({ openDetails, width }) => {
   return (
-    <div className='flex flex-col gap-4'>
+    <div className={`flex flex-col gap-4 ${width}`}>
       {emailList.map((email: Email) => (
-        <EmailCard key={email.id} data={email} />
+        <EmailCard key={email.id} data={email} openDetails={openDetails} />
       ))}
     </div>
   )
