@@ -18,7 +18,7 @@ const EmailDetails = () => {
   }
 
   return (
-    <div className='border-neutral flex w-full items-start gap-4 rounded-md border bg-white p-4'>
+    <div className='border-neutral flex h-max w-full items-start gap-4 rounded-md border bg-white p-4'>
       <ProfileImage initial={'F'} />
       <div className='flex flex-col gap-3'>
         <div className='flex items-start justify-between'>
