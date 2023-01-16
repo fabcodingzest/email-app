@@ -27,7 +27,7 @@ const EmailCard = ({ data }: EmailCardProps) => {
   const isActive = activeEmail !== '' && activeEmail === id
   const setOpenDetail = () => {
     dispatch(setActiveEmail(id))
-    dispatch(addToRead(id))
+    !isRead && dispatch(addToRead(id))
   }
   const handleClick = (event: SyntheticEvent) => {
     event.preventDefault()
