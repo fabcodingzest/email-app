@@ -11,6 +11,11 @@ export interface Email {
   short_description: string
 }
 
+export interface EmailDetails {
+  id: string
+  body: string
+}
+
 interface EmailResponse {
   list: Email[]
   total: number
@@ -25,8 +30,8 @@ export const api = createApi({
     fetchEmails: builder.query<EmailResponse, number | void>({
       query: (page = 1) => `/?page=${page}`,
     }),
-    fetchDetails: builder.query<EmailResponse, number | void>({
-      query: (id = 1) => `/?id=${id}`,
+    fetchDetails: builder.query<EmailDetails, string | void>({
+      query: (id) => `/?id=${id}`,
     }),
   }),
 })
