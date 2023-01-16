@@ -1,18 +1,16 @@
-import React, { KeyboardEventHandler, SyntheticEvent } from 'react'
+import { KeyboardEventHandler, SyntheticEvent } from 'react'
 import ProfileImage from '../common/ProfileImage'
-import { Email } from './EmailList'
 import Text from '../common/Text'
-import { formatDate } from '../../utils/formatDate'
+import { formatDate } from '../../utils/helper'
+import { useAppDispatch, useAppSelector } from '../../App/hooks'
+import { addToRead, setActiveEmail } from '../../features/email/emailSlice'
+import { Email } from '../../App/services/api'
 
 interface EmailCardProps {
   data: Email
-  details: {
-    detailActive: string
-    setDetailActive: React.Dispatch<React.SetStateAction<string>>
-  }
 }
 
-const EmailCard = ({ data, details }: EmailCardProps) => {
+const EmailCard = ({ data }: EmailCardProps) => {
   const {
     id,
     from: { email, name },
@@ -20,13 +18,16 @@ const EmailCard = ({ data, details }: EmailCardProps) => {
     subject,
     short_description,
   } = data
-  const { detailActive, setDetailActive } = details
+  const activeEmail = useAppSelector((state) => state.email.activeEmail)
+  const readEmails = useAppSelector((state) => state.email.read)
+  const dispatch = useAppDispatch()
+  const isRead = readEmails.includes(id)
   const favourite = true
   const formattedDate = formatDate(date)
-  console.log(detailActive)
-  const isActive = detailActive !== '' && detailActive === id
+  const isActive = activeEmail !== '' && activeEmail === id
   const setOpenDetail = () => {
-    setDetailActive(id)
+    dispatch(setActiveEmail(id))
+    dispatch(addToRead(id))
   }
   const handleClick = (event: SyntheticEvent) => {
     event.preventDefault()
@@ -39,9 +40,9 @@ const EmailCard = ({ data, details }: EmailCardProps) => {
   }
   return (
     <div
-      className={`border-neutral flex cursor-pointer items-start gap-2 rounded-md border bg-white px-2 py-1 sm:px-4 sm:py-2 md:gap-4 ${
+      className={`border-neutral flex cursor-pointer items-start gap-2 rounded-md border px-2 py-1 sm:px-4 sm:py-2 md:gap-4 ${
         isActive ? 'border-primary' : 'border-neutral'
-      }`}
+      } ${isRead ? 'bg-light' : 'bg-white '}`}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       role='button'
