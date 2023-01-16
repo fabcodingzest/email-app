@@ -12,7 +12,7 @@ interface EmailCardProps {
   }
 }
 
-const EmailCard: React.FunctionComponent<EmailCardProps> = ({ data, details }) => {
+const EmailCard = ({ data, details }: EmailCardProps) => {
   const {
     id,
     from: { email, name },

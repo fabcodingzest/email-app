@@ -8,10 +8,7 @@ interface ChipProps {
   }
 }
 
-const Chip: React.FunctionComponent<ChipProps> = ({
-  text,
-  filter: { activeFilter, setActiveFilter },
-}) => {
+const Chip = ({ text, filter: { activeFilter, setActiveFilter } }: ChipProps) => {
   return (
     <button
       className={`rounded-full border px-2 py-[0.1rem] text-xs  ${

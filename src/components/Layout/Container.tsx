@@ -4,7 +4,7 @@ interface ContainerProps {
   children: React.ReactNode
 }
 
-const Container: React.FunctionComponent<ContainerProps> = ({ children }) => {
+const Container = ({ children }: ContainerProps) => {
   return <div className='container  mx-auto max-w-5xl p-2 sm:p-4 md:p-8'>{children}</div>
 }
 

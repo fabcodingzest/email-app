@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Text from '../common/Text'
 import Chip from '../common/Chip'
 
-const Filter: React.FunctionComponent = () => {
+const Filter = () => {
   const [activeFilter, setActiveFilter] = useState('Unread')
   return (
     <div className='flex items-center gap-4 pb-4'>

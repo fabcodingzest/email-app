@@ -4,7 +4,7 @@ import EmailList from './components/Email/EmailList'
 import Filter from './components/Filter/Filter'
 import EmailDetails from './components/Email/EmailDetails'
 
-const App: React.FunctionComponent = () => {
+const App = () => {
   const [detailActive, setDetailActive] = useState('')
   const detailOpen = detailActive !== ''
   return (

@@ -84,7 +84,7 @@ export const emailList: Email[] = [
   },
 ]
 
-const EmailList: React.FunctionComponent<EmailListProps> = ({ details, width }) => {
+const EmailList = ({ details, width }: EmailListProps) => {
   return (
     <div className={`flex flex-col gap-4 ${width}`}>
       {emailList.map((email: Email) => (

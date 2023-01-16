@@ -7,14 +7,14 @@ interface TextProps {
   style?: string
   spanStyles?: string
 }
-const Text: React.FunctionComponent<TextProps> = ({
+const Text = ({
   fontSize = 'text-xs',
   color = 'text-secondary',
   spanText,
   text,
   style,
   spanStyles,
-}) => {
+}: TextProps) => {
   return (
     <p className={`p-[0.1rem]  ${fontSize}  ${color} ${style ? style : ''}`}>
       {text}
