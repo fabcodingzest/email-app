@@ -8,6 +8,7 @@ import CloseBtn from '../common/CloseBtn'
 import { useDispatch } from 'react-redux'
 import { addToFavourite, removeFavourite } from '../../features/email/emailSlice'
 import Error from '../common/Error'
+import Loader from '../common/Loader'
 
 const EmailDetails = () => {
   const { activeEmail, allEmails, favourite } = useAppSelector((state) => state.email)
@@ -18,7 +19,7 @@ const EmailDetails = () => {
   const formattedDate = formatDate(emailDetails.date)
 
   if (isLoading) {
-    return <p>JAMASHIMA WAIT A MINUTE ....</p>
+    return <Loader />
   }
 
   return (

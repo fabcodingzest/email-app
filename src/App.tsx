@@ -5,6 +5,7 @@ import EmailDetails from './components/Email/EmailDetails'
 import { useAppSelector } from './App/hooks'
 import { useFetchEmailsQuery } from './App/services/api'
 import Error from './components/common/Error'
+import Loader from './components/common/Loader'
 
 const App = () => {
   const activeEmail = useAppSelector((state) => state.email.activeEmail)
@@ -20,11 +21,7 @@ const App = () => {
           <>
             <Filter />
             <div className='flex gap-4'>
-              {isLoading ? (
-                <p>LOADING JAMASHIMA......</p>
-              ) : (
-                <EmailList width={detailOpen ? 'w-2/6' : 'w-full'} />
-              )}
+              {isLoading ? <Loader /> : <EmailList width={detailOpen ? 'w-2/6' : 'w-full'} />}
               {detailOpen && <EmailDetails />}
             </div>
           </>
