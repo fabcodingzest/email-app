@@ -6,7 +6,6 @@ export interface EmailState {
   activeFilter: string
   allEmails: Email[]
   read: string[]
-  unread: string[]
   favourite: string[]
 }
 
@@ -15,7 +14,6 @@ const initialState: EmailState = {
   activeFilter: 'unread',
   allEmails: [],
   read: [],
-  unread: [],
   favourite: [],
 }
 
