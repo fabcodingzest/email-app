@@ -4,11 +4,11 @@ import { formatDate } from '../../utils/helper'
 import sanitizeHtml from 'sanitize-html'
 import { useFetchDetailsQuery } from '../../App/services/api'
 import { useAppSelector } from '../../App/hooks'
+import CloseBtn from '../common/CloseBtn'
 
 const EmailDetails = () => {
   const activeEmail = useAppSelector((state) => state.email.activeEmail)
   const { data: emailBody, isLoading, isSuccess } = useFetchDetailsQuery(activeEmail)
-  console.log(emailBody)
   const allEmails = useAppSelector((state) => state.email.allEmails)
   const [emailDetails] = allEmails.filter((email) => email.id === activeEmail)
   const formattedDate = formatDate(emailDetails.date)
@@ -18,7 +18,8 @@ const EmailDetails = () => {
   }
 
   return (
-    <div className='border-neutral flex h-max w-full items-start gap-4 rounded-md border bg-white p-4'>
+    <div className='border-neutral relative flex h-max w-full items-start gap-4 rounded-md border bg-white p-4'>
+      <CloseBtn />
       <ProfileImage initial={'F'} />
       <div className='flex flex-col gap-3'>
         <div className='flex items-start justify-between'>
