@@ -5,12 +5,15 @@ import sanitizeHtml from 'sanitize-html'
 import { useFetchDetailsQuery } from '../../App/services/api'
 import { useAppSelector } from '../../App/hooks'
 import CloseBtn from '../common/CloseBtn'
+import { useDispatch } from 'react-redux'
+import { addToFavourite, removeFavourite } from '../../features/email/emailSlice'
 
 const EmailDetails = () => {
-  const activeEmail = useAppSelector((state) => state.email.activeEmail)
+  const { activeEmail, allEmails, favourite } = useAppSelector((state) => state.email)
   const { data: emailBody, isLoading, isSuccess } = useFetchDetailsQuery(activeEmail)
-  const allEmails = useAppSelector((state) => state.email.allEmails)
+  const dispatch = useDispatch()
   const [emailDetails] = allEmails.filter((email) => email.id === activeEmail)
+  const isFav = favourite.includes(activeEmail)
   const formattedDate = formatDate(emailDetails.date)
 
   if (isLoading) {
@@ -24,8 +27,17 @@ const EmailDetails = () => {
       <div className='flex flex-col gap-3'>
         <div className='flex items-start justify-between'>
           <Text fontSize='text-xl' text={emailDetails.subject} style='font-bold' />
-          <button className='bg-primary rounded-full px-2 py-1 text-xs text-white'>
-            Mark as favorite
+          <button
+            className='bg-primary rounded-full px-2 py-1 text-xs text-white'
+            onClick={() => {
+              if (isFav) {
+                dispatch(removeFavourite(activeEmail))
+              } else {
+                dispatch(addToFavourite(activeEmail))
+              }
+            }}
+          >
+            {isFav ? 'Remove from Fav' : 'Mark as favorite'}
           </button>
         </div>
         <Text fontSize='text-xs' text={formattedDate} />

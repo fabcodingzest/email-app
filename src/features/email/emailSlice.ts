@@ -32,7 +32,8 @@ const emailSlice = createSlice({
       state.activeEmail = ''
     },
     addToRead: (state, action: PayloadAction<string>) => {
-      state.read.push(action.payload)
+      const id = action.payload
+      !state.read.includes(id) && state.read.push(id)
       if (state.activeFilter === 'unread') {
         state.activeFilter = 'read'
       }
@@ -41,7 +42,11 @@ const emailSlice = createSlice({
       state.favourite.push(action.payload)
     },
     removeFavourite: (state, action: PayloadAction<string>) => {
-      state.favourite.filter((item) => item !== action.payload)
+      const filteredArr = state.favourite.filter((item) => item !== action.payload)
+      state.favourite = filteredArr
+      if (state.activeFilter === 'favourite') {
+        state.activeEmail = ''
+      }
     },
   },
   extraReducers: (builder) => {
@@ -51,6 +56,12 @@ const emailSlice = createSlice({
   },
 })
 
-export const { removeActiveEmail, setActiveEmail, setActiveFilter, addToRead, addToFavourite } =
-  emailSlice.actions
+export const {
+  removeActiveEmail,
+  setActiveEmail,
+  setActiveFilter,
+  addToRead,
+  addToFavourite,
+  removeFavourite,
+} = emailSlice.actions
 export default emailSlice.reducer
