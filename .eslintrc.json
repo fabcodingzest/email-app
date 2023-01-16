@@ -39,7 +39,8 @@
     "spaced-comment": "error",
     "quotes": ["error", "single"],
     "no-duplicate-imports": "error",
-    "tailwindcss/no-custom-classname": 0
+    "tailwindcss/no-custom-classname": 0,
+    "@typescript-eslint/restrict-template-expressions": 0
   },
   "settings": {
     "react": {
