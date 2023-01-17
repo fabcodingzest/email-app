@@ -12,13 +12,19 @@ import Loader from '../common/Loader'
 
 const EmailDetails = () => {
   const { activeEmail, allEmails, favourite } = useAppSelector((state) => state.email)
-  const { data: emailBody, isLoading, isSuccess, error } = useFetchDetailsQuery(activeEmail)
+  const {
+    data: emailBody,
+    isLoading,
+    isFetching,
+    isSuccess,
+    error,
+  } = useFetchDetailsQuery(activeEmail)
   const dispatch = useDispatch()
   const [emailDetails] = allEmails.filter((email) => email.id === activeEmail)
   const isFav = favourite.includes(activeEmail)
   const formattedDate = formatDate(emailDetails.date)
 
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return <Loader />
   }
 
