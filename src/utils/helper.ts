@@ -2,7 +2,7 @@ import { EmailState } from '../features/email/emailSlice'
 
 export const getFilteredEmails = (state: EmailState, filter: string) => {
   if (filter === 'unread') {
-    return state.allEmails.filter((email) => !state.read.includes(email.id))
+    return state.allEmails.filter((email) => state.unread.includes(email.id))
   } else if (filter === 'read') {
     return state.allEmails.filter((email) => state.read.includes(email.id))
   } else if (filter === 'favourite') {
