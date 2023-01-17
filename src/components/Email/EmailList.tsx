@@ -15,13 +15,13 @@ const EmailList = ({ list, width, currPage }: EmailListProps) => {
   const indexOfFirstEmail = indexOfLastEmail - EMAIL_PER_PAGE
   const currentEmails = list.slice(indexOfFirstEmail, indexOfLastEmail)
   return (
-    <div className={`flex flex-col gap-4 ${width}`}>
+    <section className={`flex flex-col gap-4 ${width}`}>
       {list.length === 0 ? (
         <p>No {filter} emails</p>
       ) : (
         currentEmails.map((email: Email) => <EmailCard key={email.id} data={email} />)
       )}
-    </div>
+    </section>
   )
 }
 

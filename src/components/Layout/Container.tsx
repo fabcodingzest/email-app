@@ -2,10 +2,13 @@ import React from 'react'
 
 interface ContainerProps {
   children: React.ReactNode
+  styles?: string
 }
 
-const Container = ({ children }: ContainerProps) => {
-  return <div className='container  mx-auto max-w-5xl p-2 sm:p-4 md:p-8'>{children}</div>
+const Container = ({ children, styles }: ContainerProps) => {
+  return (
+    <div className={`container  mx-auto max-w-5xl px-2 sm:px-4 md:px-8 ${styles}`}>{children}</div>
+  )
 }
 
 export default Container

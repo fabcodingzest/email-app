@@ -10,6 +10,8 @@ import { useState } from 'react'
 import Pagination from './components/common/Pagination'
 import { getFilteredEmails } from './utils/helper'
 import { EMAIL_PER_PAGE } from './utils/constants'
+import Footer from './components/Footer/Footer'
+import Header from './components/Header/Header'
 
 const App = () => {
   const state = useAppSelector((state) => state.email)
@@ -38,34 +40,38 @@ const App = () => {
     : setOthersCurrPage
 
   return (
-    <div className='text-secondary min-h-screen bg-[#F4F5F9] py-2 md:py-4'>
-      <Container>
-        {error ? (
-          <Error error={error} />
-        ) : (
-          <>
-            <div className='flex items-center justify-between'>
-              <Filter />
-              {!detailOpen && totalPages > 0 && (
-                <Pagination currPage={currPage} totalPages={totalPages} setPage={setCurrPage} />
-              )}
-            </div>
-            <div className='flex gap-4'>
-              {isLoading || isFetching ? (
-                <Loader />
-              ) : (
-                <EmailList
-                  currPage={currPage}
-                  list={currentEmails}
-                  width={detailOpen ? 'w-2/6' : 'w-full'}
-                />
-              )}
-              {detailOpen && <EmailDetails />}
-            </div>
-          </>
-        )}
-      </Container>
-    </div>
+    <>
+      <Header text='FabMail' />
+      <main className='text-secondary min-h-screen bg-[#F4F5F9]'>
+        <Container styles='py-4'>
+          {error ? (
+            <Error error={error} />
+          ) : (
+            <>
+              <div className='flex items-center justify-between pb-2 md:pb-4'>
+                <Filter />
+                {!detailOpen && totalPages > 0 && (
+                  <Pagination currPage={currPage} totalPages={totalPages} setPage={setCurrPage} />
+                )}
+              </div>
+              <div className='flex gap-4'>
+                {isLoading || isFetching ? (
+                  <Loader />
+                ) : (
+                  <EmailList
+                    currPage={currPage}
+                    list={currentEmails}
+                    width={detailOpen ? 'w-2/6' : 'w-full'}
+                  />
+                )}
+                {detailOpen && <EmailDetails />}
+              </div>
+            </>
+          )}
+        </Container>
+      </main>
+      <Footer />
+    </>
   )
 }
 
