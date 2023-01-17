@@ -9,8 +9,7 @@ import Loader from './components/common/Loader'
 import { useState } from 'react'
 import Pagination from './components/common/Pagination'
 import { getFilteredEmails } from './utils/helper'
-
-export const EMAIL_PER_PAGE = 10
+import { EMAIL_PER_PAGE } from './utils/constants'
 
 const App = () => {
   const state = useAppSelector((state) => state.email)
