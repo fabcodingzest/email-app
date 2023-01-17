@@ -51,7 +51,7 @@ const emailSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addMatcher(api.endpoints.fetchEmails.matchFulfilled, (state, { payload }) => {
-      state.allEmails = [...state.allEmails,...payload.list]
+      state.allEmails = [...state.allEmails, ...payload.list]
     })
   },
 })
