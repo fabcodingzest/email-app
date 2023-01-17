@@ -14,7 +14,7 @@ export const EMAIL_PER_PAGE = 10
 
 const App = () => {
   const [queryCurrPage, setQueryCurrPage] = useState(1)
-  const [arrayCurrPage, setArrCurrPage] = useState(1)
+  const [arrCurrPage, setArrCurrPage] = useState(1)
   const { data, isLoading, isFetching, isSuccess, error } = useFetchEmailsQuery(queryCurrPage)
   const state = useAppSelector((state) => state.email)
   const filter = state.activeFilter
@@ -24,7 +24,7 @@ const App = () => {
   const totalPages = Math.ceil(
     (isSuccess && isAllFilter ? data?.total : currentEmails.length) / EMAIL_PER_PAGE,
   )
-  const currPage = isAllFilter ? queryCurrPage : arrayCurrPage
+  const currPage = isAllFilter ? queryCurrPage : arrCurrPage
   const setCurrPage = isAllFilter ? setQueryCurrPage : setArrCurrPage
 
   return (
