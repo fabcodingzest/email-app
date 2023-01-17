@@ -1,6 +1,6 @@
 import React from 'react'
 import Text from '../common/Text'
-import Chip from '../common/Chip'
+import Chip from './Chip'
 
 const Filter = () => {
   return (
