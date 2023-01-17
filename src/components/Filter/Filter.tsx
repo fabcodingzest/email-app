@@ -4,8 +4,8 @@ import Chip from './Chip'
 
 const Filter = () => {
   return (
-    <div className='flex items-center md:gap-2'>
-      <Text fontSize='text-xs' color='text-black' text='Filter By:' />
+    <div className='flex items-center  gap-1 sm:gap-2'>
+      <Text fontSize='text-xs sm:text-sm' color='text-black' text='Filter By:' />
       <Chip text='All' />
       <Chip text='Unread' />
       <Chip text='Read' />

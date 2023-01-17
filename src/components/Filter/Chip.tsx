@@ -13,7 +13,7 @@ const Chip = ({ text }: ChipProps) => {
 
   return (
     <button
-      className={`rounded-full border px-2 py-[0.1rem] text-xs  ${
+      className={`rounded-full border px-2 text-xs sm:text-sm  ${
         filter === text.toLowerCase()
           ? 'bg-btn border-neutral text-secondary'
           : 'border-transparent text-black'
