@@ -18,11 +18,11 @@ const EmailCard = ({ data }: EmailCardProps) => {
     subject,
     short_description,
   } = data
-  const activeEmail = useAppSelector((state) => state.email.activeEmail)
-  const readEmails = useAppSelector((state) => state.email.read)
+  const { activeEmail, read, favourite } = useAppSelector((state) => state.email)
   const dispatch = useAppDispatch()
-  const isRead = readEmails.includes(id)
-  const favourite = true
+  const isRead = read.includes(id)
+  const isFavourite = favourite.includes(id)
+
   const formattedDate = formatDate(date)
   const isActive = activeEmail !== '' && activeEmail === id
   const setOpenDetail = () => {
@@ -54,7 +54,7 @@ const EmailCard = ({ data }: EmailCardProps) => {
         <Text text={'Subject:'} spanText={`${subject}`} spanStyles='font-extrabold' />
         <Text text={short_description} style='truncate' />
         <Text text={formattedDate} style='inline-block' />
-        {favourite && (
+        {isFavourite && (
           <Text text={'Favourite'} color='text-primary' style='inline-block font-bold pl-4' />
         )}
       </div>
