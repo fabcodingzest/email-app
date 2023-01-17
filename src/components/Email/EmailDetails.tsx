@@ -29,7 +29,7 @@ const EmailDetails = () => {
   }
 
   return (
-    <section className='border-neutral relative flex h-max w-full items-start gap-4 rounded-md border bg-white p-4'>
+    <section className='border-neutral relative flex h-max w-full items-start gap-2 rounded-md border bg-white p-4 sm:gap-4'>
       {error ? (
         <Error error={error} />
       ) : (
@@ -38,7 +38,7 @@ const EmailDetails = () => {
           <ProfileImage initial={'F'} />
           <div className='flex flex-col gap-3'>
             <div className='flex items-start justify-between'>
-              <h2 className='text-xl font-bold'>{emailDetails.subject}</h2>
+              <h2 className='text-md font-bold sm:text-xl'>{emailDetails.subject}</h2>
               <button
                 className='bg-primary rounded-full px-2 py-1 text-xs text-white'
                 onClick={() => {

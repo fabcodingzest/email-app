@@ -1,4 +1,5 @@
 import { Dispatch } from 'react'
+import Text from './Text'
 
 interface PaginationProps {
   currPage: number
@@ -40,9 +41,9 @@ const Pagination = ({ currPage, totalPages, setPage }: PaginationProps) => {
     if (havePrev) setPage(currPage - 1)
   }
   return (
-    <div className='flex items-center gap-2 text-xs md:text-sm '>
+    <div className='flex items-center gap-2'>
       <PageBtn direction='prev' onClick={prevPage} disabled={!havePrev} />
-      {currPage} of {totalPages}
+      <Text text={`${currPage} of ${totalPages}`} style='text-xs text-sm' />
       <PageBtn direction='next' onClick={nextPage} disabled={!haveNext} />
     </div>
   )

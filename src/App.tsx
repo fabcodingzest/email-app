@@ -48,7 +48,7 @@ const App = () => {
             <Error error={error} />
           ) : (
             <>
-              <div className='flex items-center justify-between pb-2 md:pb-4'>
+              <div className='flex items-center justify-between pb-4'>
                 <Filter />
                 {!detailOpen && totalPages > 0 && (
                   <Pagination currPage={currPage} totalPages={totalPages} setPage={setCurrPage} />
@@ -58,11 +58,7 @@ const App = () => {
                 {isLoading || isFetching ? (
                   <Loader />
                 ) : (
-                  <EmailList
-                    currPage={currPage}
-                    list={currentEmails}
-                    width={detailOpen ? 'w-2/6' : 'w-full'}
-                  />
+                  <EmailList detailOpen={detailOpen} currPage={currPage} list={currentEmails} />
                 )}
                 {detailOpen && <EmailDetails />}
               </div>

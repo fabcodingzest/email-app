@@ -1,9 +1,9 @@
 const Loader = () => {
   return (
-    <div className='flex h-screen  w-screen items-center justify-center'>
+    <div className='flex  h-96  w-screen items-center justify-center'>
       <svg
         xmlns='http://www.w3.org/2000/svg'
-        className='h-24  w-24 animate-bounce text-red-600'
+        className='text-primary h-12 w-12 animate-bounce md:h-24 md:w-24'
         fill='none'
         viewBox='0 0 24 24'
         stroke='currentColor'
