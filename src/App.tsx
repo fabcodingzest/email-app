@@ -13,19 +13,30 @@ import { getFilteredEmails } from './utils/helper'
 export const EMAIL_PER_PAGE = 10
 
 const App = () => {
-  const [queryCurrPage, setQueryCurrPage] = useState(1)
-  const [arrCurrPage, setArrCurrPage] = useState(1)
-  const { data, isLoading, isFetching, isSuccess, error } = useFetchEmailsQuery(queryCurrPage)
   const state = useAppSelector((state) => state.email)
   const filter = state.activeFilter
+  const [queryCurrPage, setQueryCurrPage] = useState(1)
+  const [othersCurrPage, setOthersCurrPage] = useState(1)
+  const [unreadCurrPage, setUnreadCurrPage] = useState(1)
+  const isUnread = filter === 'unread'
+  const fetch = isUnread ? unreadCurrPage : queryCurrPage
+  const { data, isLoading, isFetching, isSuccess, error } = useFetchEmailsQuery(fetch)
   const currentEmails = getFilteredEmails(state, filter)
   const detailOpen = state.activeEmail !== ''
-  const isAllFilter = ['all', 'unread'].includes(filter)
+  const isAllFilter = filter === 'all'
+  const totalCurrentEmails = currentEmails.length
+  const totalResEmails = isSuccess ? data.total : 0
+  const totalUnreadPages = isSuccess ? data.total - state.read.length : 0
   const totalPages = Math.ceil(
-    (isSuccess && isAllFilter ? data?.total : currentEmails.length) / EMAIL_PER_PAGE,
+    (isUnread ? totalUnreadPages : isAllFilter ? totalResEmails : totalCurrentEmails) /
+      EMAIL_PER_PAGE,
   )
-  const currPage = isAllFilter ? queryCurrPage : arrCurrPage
-  const setCurrPage = isAllFilter ? setQueryCurrPage : setArrCurrPage
+  const currPage = isUnread ? unreadCurrPage : isAllFilter ? queryCurrPage : othersCurrPage
+  const setCurrPage = isUnread
+    ? setUnreadCurrPage
+    : isAllFilter
+    ? setQueryCurrPage
+    : setOthersCurrPage
 
   return (
     <div className='text-secondary min-h-screen bg-[#F4F5F9] py-2 md:py-4'>
