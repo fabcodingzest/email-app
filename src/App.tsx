@@ -20,7 +20,7 @@ const App = () => {
   const filter = state.activeFilter
   const currentEmails = getFilteredEmails(state, filter)
   const detailOpen = state.activeEmail !== ''
-  const isAllFilter = filter === 'all'
+  const isAllFilter = ['all', 'unread'].includes(filter)
   const totalPages = Math.ceil(
     (isSuccess && isAllFilter ? data?.total : currentEmails.length) / EMAIL_PER_PAGE,
   )
