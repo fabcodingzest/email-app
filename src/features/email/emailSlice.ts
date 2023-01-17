@@ -6,6 +6,7 @@ export interface EmailState {
   activeFilter: string
   allEmails: Email[]
   read: string[]
+  unread: string[]
   favourite: string[]
 }
 
@@ -14,6 +15,7 @@ const initialState: EmailState = {
   activeFilter: 'unread',
   allEmails: [],
   read: [],
+  unread: [],
   favourite: [],
 }
 
@@ -33,7 +35,9 @@ const emailSlice = createSlice({
     },
     addToRead: (state, action: PayloadAction<string>) => {
       const id = action.payload
+      const updatedUnread = state.unread.filter((item) => item !== id)
       !state.read.includes(id) && state.read.push(id)
+      state.unread = updatedUnread
       if (state.activeFilter === 'unread') {
         state.activeFilter = 'read'
       }
@@ -51,7 +55,9 @@ const emailSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addMatcher(api.endpoints.fetchEmails.matchFulfilled, (state, { payload }) => {
+      const unreadArr = payload.list.map((item) => item.id)
       state.allEmails = [...state.allEmails, ...payload.list]
+      state.unread = [...state.unread, ...unreadArr]
     })
   },
 })
