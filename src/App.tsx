@@ -15,16 +15,16 @@ import Header from './components/Header/Header'
 
 const App = () => {
   const state = useAppSelector((state) => state.email)
-  const filter = state.activeFilter
+  const detailOpen = state.activeEmail !== ''
   const [queryCurrPage, setQueryCurrPage] = useState(1)
   const [othersCurrPage, setOthersCurrPage] = useState(1)
   const [unreadCurrPage, setUnreadCurrPage] = useState(1)
+  const filter = state.activeFilter
   const isUnread = filter === 'unread'
-  const fetch = isUnread ? unreadCurrPage : queryCurrPage
-  const { data, isLoading, isFetching, isSuccess, error } = useFetchEmailsQuery(fetch)
-  const currentEmails = getFilteredEmails(state, filter)
-  const detailOpen = state.activeEmail !== ''
   const isAllFilter = filter === 'all'
+  const fetchOn = isUnread ? unreadCurrPage : queryCurrPage
+  const { data, isLoading, isFetching, isSuccess, error } = useFetchEmailsQuery(fetchOn)
+  const currentEmails = getFilteredEmails(state, filter)
   const totalCurrentEmails = currentEmails.length
   const totalResEmails = isSuccess ? data.total : 0
   const totalUnreadPages = isSuccess ? data.total - state.read.length : 0
