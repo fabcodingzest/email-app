@@ -4,9 +4,10 @@ import { setActiveFilter } from '../../features/email/emailSlice'
 
 interface ChipProps {
   text: string
+  setCurrPage: React.Dispatch<React.SetStateAction<number>>
 }
 
-const Chip = ({ text }: ChipProps) => {
+const Chip = ({ text, setCurrPage }: ChipProps) => {
   const filter = useAppSelector((state) => state.email.activeFilter)
   const dispatch = useDispatch()
 
@@ -17,7 +18,10 @@ const Chip = ({ text }: ChipProps) => {
           ? 'bg-btn border-neutral text-secondary'
           : 'border-transparent text-black'
       }`}
-      onClick={() => dispatch(setActiveFilter(text.toLowerCase()))}
+      onClick={() => {
+        setCurrPage(1)
+        dispatch(setActiveFilter(text.toLowerCase()))
+      }}
     >
       {text}
     </button>

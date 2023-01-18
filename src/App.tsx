@@ -29,7 +29,7 @@ const App = () => {
           ) : (
             <>
               <div className='flex items-center justify-between pb-4'>
-                <Filter />
+                <Filter setCurrPage={setCurrPage} />
                 {!detailOpen && totalPages > 0 && (
                   <Pagination currPage={currPage} totalPages={totalPages} setPage={setCurrPage} />
                 )}
