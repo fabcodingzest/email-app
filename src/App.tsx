@@ -1,17 +1,9 @@
-import Container from './components/Layout/Container'
-import EmailList from './components/Email/EmailList'
-import Filter from './components/Filter/Filter'
-import EmailDetails from './components/Email/EmailDetails'
+import { useState } from 'react'
 import { useAppSelector } from './App/hooks'
 import { useFetchEmailsQuery } from './App/services/api'
-import Error from './components/common/Error'
-import Loader from './components/common/Loader'
-import { useState } from 'react'
-import Pagination from './components/common/Pagination'
 import { getFilteredEmails } from './utils/helper'
 import { EMAIL_PER_PAGE } from './utils/constants'
-import Footer from './components/Footer/Footer'
-import Header from './components/Header/Header'
+import { Header, Container, Filter, Pagination, Loader, EmailList, EmailDetails, Footer, Error } from './components'
 
 const App = () => {
   const state = useAppSelector((state) => state.email)

@@ -1,10 +1,9 @@
-import { KeyboardEventHandler, SyntheticEvent } from 'react'
-import ProfileImage from '../common/ProfileImage'
-import Text from '../common/Text'
+import { Text, Profileimage } from '..'
+import { Email } from '../../App/services/api'
 import { formatDate } from '../../utils/helper'
+import { KeyboardEventHandler, SyntheticEvent } from 'react'
 import { useAppDispatch, useAppSelector } from '../../App/hooks'
 import { addToRead, setActiveEmail } from '../../features/email/emailSlice'
-import { Email } from '../../App/services/api'
 
 interface EmailCardProps {
   data: Email
@@ -48,7 +47,7 @@ const EmailCard = ({ data }: EmailCardProps) => {
       role='button'
       tabIndex={0}
     >
-      <ProfileImage initial={name[0].toUpperCase()} />
+      <Profileimage initial={name[0].toUpperCase()} />
       <div className='w-5/6'>
         <Text text={'From:'} spanText={`${name} <${email}>`} spanStyles='font-extrabold' />
         <Text text={'Subject:'} spanText={`${subject}`} spanStyles='font-extrabold' />

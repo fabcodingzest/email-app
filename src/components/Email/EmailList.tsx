@@ -1,7 +1,7 @@
-import { useAppSelector } from '../../App/hooks'
+import { EmailCard } from '..'
 import { Email } from '../../App/services/api'
+import { useAppSelector } from '../../App/hooks'
 import { EMAIL_PER_PAGE } from '../../utils/constants'
-import EmailCard from './EmailCard'
 
 interface EmailListProps {
   list: Email[]

@@ -1,14 +1,10 @@
-import ProfileImage from '../common/ProfileImage'
-import Text from '../common/Text'
-import { formatDate } from '../../utils/helper'
 import sanitizeHtml from 'sanitize-html'
-import { useFetchDetailsQuery } from '../../App/services/api'
-import { useAppSelector } from '../../App/hooks'
-import CloseBtn from '../common/CloseBtn'
 import { useDispatch } from 'react-redux'
+import { formatDate } from '../../utils/helper'
+import { useAppSelector } from '../../App/hooks'
+import { useFetchDetailsQuery } from '../../App/services/api'
+import { CloseBtn, Loader, Error, Text, Profileimage } from '..'
 import { addToFavourite, removeFavourite } from '../../features/email/emailSlice'
-import Error from '../common/Error'
-import Loader from '../common/Loader'
 
 const EmailDetails = () => {
   const { activeEmail, allEmails, favourite } = useAppSelector((state) => state.email)
@@ -35,7 +31,7 @@ const EmailDetails = () => {
       ) : (
         <>
           <CloseBtn />
-          <ProfileImage initial={'F'} />
+          <Profileimage initial={'F'} />
           <div className='flex flex-col gap-3'>
             <div className='flex items-start justify-between'>
               <h2 className='text-md font-bold sm:text-xl'>{emailDetails.subject}</h2>

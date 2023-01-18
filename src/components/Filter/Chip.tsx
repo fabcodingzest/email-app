@@ -1,6 +1,5 @@
-import React from 'react'
-import { useAppSelector } from '../../App/hooks'
 import { useDispatch } from 'react-redux'
+import { useAppSelector } from '../../App/hooks'
 import { setActiveFilter } from '../../features/email/emailSlice'
 
 interface ChipProps {
