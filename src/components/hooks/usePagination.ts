@@ -4,13 +4,13 @@ import { useFetchEmailsQuery } from '../../App/services/api'
 import { EMAIL_PER_PAGE } from '../../utils/constants'
 import { getFilteredEmails } from '../../utils/helper'
 
-const usePagination = ({ filter }: { filter: string }) => {
+const usePagination = () => {
   const state = useAppSelector((state) => state.email)
   // Maintaining different states for different filters to differentiate the fetching api for all and unread and using existing state state for read and favourite
   const [queryCurrPage, setQueryCurrPage] = useState(1)
   const [othersCurrPage, setOthersCurrPage] = useState(1)
   const [unreadCurrPage, setUnreadCurrPage] = useState(1)
-  // const filter = state.activeFilter
+  const filter = state.activeFilter
   const isUnread = filter === 'unread'
   const isAllFilter = filter === 'all'
   const fetchOn = isUnread ? unreadCurrPage : queryCurrPage
@@ -34,9 +34,6 @@ const usePagination = ({ filter }: { filter: string }) => {
     : isAllFilter
     ? setQueryCurrPage
     : setOthersCurrPage
-
-  // setUnreadCurrPage
-
   return [currPage, setCurrPage, totalPages, currentEmails, isLoading, isFetching, error] as const
 }
 

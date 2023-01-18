@@ -13,11 +13,10 @@ import {
 import usePagination from './components/hooks/usePagination'
 
 const App = () => {
-  const state = useAppSelector((state) => state.email)
-  const detailOpen = state.activeEmail !== ''
-  const filter = state.activeFilter
+  const activeEmail = useAppSelector((state) => state.email.activeEmail)
+  const detailOpen = activeEmail !== ''
   const [currPage, setCurrPage, totalPages, currentEmails, isLoading, isFetching, error] =
-    usePagination({ filter })
+    usePagination()
 
   return (
     <>
