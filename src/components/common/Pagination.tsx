@@ -8,7 +8,7 @@ interface PaginationProps {
 }
 interface PageBtnProps {
   direction: string
-  onClick: () => void
+  onClick: React.MouseEventHandler
   disabled: boolean
 }
 const PageBtn = ({ onClick, direction, disabled }: PageBtnProps) => {
@@ -20,7 +20,7 @@ const PageBtn = ({ onClick, direction, disabled }: PageBtnProps) => {
         'group flex h-1 w-1 items-center justify-center rounded-full active:translate-y-[0.05rem] disabled:opacity-25 md:h-4 md:w-4'
       }
       disabled={disabled}
-      onClick={() => onClick()}
+      onClick={onClick}
     >
       <span
         className={`h-0 w-0 border-x-8 border-b-[0.5rem] border-x-transparent border-b-black group-hover:border-b-gray-600 ${
