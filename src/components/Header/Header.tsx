@@ -9,7 +9,7 @@ const Header = ({ text }: HeaderProps) => {
   return (
     <header className='bg-primary py-2 '>
       <Container>
-        <Text text={text} style='font-bold text-lg md:text-2xl' color='text-white' />
+        <h1 className='text-md font-bold text-white sm:text-xl'>{text}</h1>
       </Container>
     </header>
   )
