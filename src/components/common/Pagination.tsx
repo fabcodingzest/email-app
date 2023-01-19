@@ -43,7 +43,7 @@ const Pagination = ({ currPage, totalPages, setPage }: PaginationProps) => {
   return (
     <div className='flex items-center gap-2'>
       <PageBtn direction='prev' onClick={prevPage} disabled={!havePrev} />
-      <Text text={`${currPage} of ${totalPages}`} style='text-xs text-sm' />
+      <Text text={`${currPage} of ${totalPages}`} style='text-xs sm:text-sm' />
       <PageBtn direction='next' onClick={nextPage} disabled={!haveNext} />
     </div>
   )

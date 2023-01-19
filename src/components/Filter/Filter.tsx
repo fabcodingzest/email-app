@@ -7,7 +7,7 @@ interface FilterProps {
 
 const Filter = ({ setCurrPage }: FilterProps) => {
   return (
-    <div className='flex items-center  gap-1 sm:gap-2'>
+    <div className='flex items-center sm:gap-2'>
       <Text fontSize='text-xs sm:text-sm' color='text-black' text='Filter By:' />
       <Chip text='All' setCurrPage={setCurrPage} />
       <Chip text='Unread' setCurrPage={setCurrPage} />
